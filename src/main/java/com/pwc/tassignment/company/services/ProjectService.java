@@ -2,11 +2,10 @@ package com.pwc.tassignment.company.services;
 
 
 import com.pwc.tassignment.company.entities.Project;
-import com.pwc.tassignment.company.repositories.ProjectsRepository;
+import com.pwc.tassignment.company.repositories.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,27 +13,27 @@ import java.util.Optional;
 public class ProjectService {
 
     @Autowired
-    private ProjectsRepository projectsRepository;
+    private ProjectRepository projectRepository;
 
     public Project create(Project project) {
-        return projectsRepository.saveAndFlush(project);
+        return projectRepository.saveAndFlush(project);
     }
 
     public List<Project> findAllProjects() {
-        return projectsRepository.findAll();
+        return projectRepository.findAll();
     }
 
     public Project update(Project project) {
-        return projectsRepository.save(project);
+        return projectRepository.save(project);
     }
 
 
     public void deleteById(Long projectID){
-        projectsRepository.deleteById(projectID);
+        projectRepository.deleteById(projectID);
     }
 
     public Project findProjectById(Long Id) {
-        Optional<Project> project = projectsRepository.findById(Id);
+        Optional<Project> project = projectRepository.findById(Id);
 
         if (project.isPresent()) {
             return project.get();

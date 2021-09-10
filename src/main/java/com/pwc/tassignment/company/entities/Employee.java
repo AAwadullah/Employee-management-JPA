@@ -16,7 +16,7 @@ public class Employee {
     @Column(nullable = false)
     private String email;
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private EmpRole empRole;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "department_id", nullable = false, updatable = true)
@@ -34,10 +34,10 @@ public class Employee {
 
     }
 
-    public Employee( String name, String email, Role role, Department department) {
+    public Employee(String name, String email, EmpRole empRole, Department department) {
         this.name = name;
         this.email = email;
-        this.role = role;
+        this.empRole = empRole;
         this.department = department;
     }
 
@@ -65,12 +65,12 @@ public class Employee {
         this.email = email;
     }
 
-    public Role getRole() {
-        return role;
+    public EmpRole getEmpRole() {
+        return empRole;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setEmpRole(EmpRole role) {
+        this.empRole = role;
     }
 
 

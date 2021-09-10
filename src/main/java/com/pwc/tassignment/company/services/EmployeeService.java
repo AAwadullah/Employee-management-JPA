@@ -2,7 +2,7 @@ package com.pwc.tassignment.company.services;
 
 import com.pwc.tassignment.company.entities.Department;
 import com.pwc.tassignment.company.entities.Employee;
-import com.pwc.tassignment.company.repositories.DepartmentsRepository;
+import com.pwc.tassignment.company.repositories.DepartmentRepository;
 import com.pwc.tassignment.company.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,7 +20,7 @@ public class EmployeeService {
     private EmployeeRepository employeeRepository;
 
     @Autowired
-    private DepartmentsRepository departmentsRepository;
+    private DepartmentRepository departmentRepository;
 
     public Employee create(Employee employee) {
         return employeeRepository.saveAndFlush(employee);
@@ -72,7 +72,7 @@ public class EmployeeService {
 
 
     public Set<Employee> selectByDeptId(Integer id) {
-        Optional<Department> optDept = departmentsRepository.findById(id);
+        Optional<Department> optDept = departmentRepository.findById(id);
         if (optDept.isPresent()) {
             return optDept.get().getDepartmentEmployees();
         } else {

@@ -2,8 +2,7 @@ package com.pwc.tassignment.company.services;
 
 
 import com.pwc.tassignment.company.entities.Department;
-import com.pwc.tassignment.company.repositories.DepartmentsRepository;
-import com.pwc.tassignment.company.repositories.EmployeeRepository;
+import com.pwc.tassignment.company.repositories.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,31 +14,31 @@ public class DepartmentService {
 
 
     @Autowired
-    private DepartmentsRepository departmentsRepository;
+    private DepartmentRepository departmentRepository;
 
     public List<Department> findAllDepartments(){
-        return departmentsRepository.findAll();
+        return departmentRepository.findAll();
     }
 
     public Department findByName(String name){
-        return departmentsRepository.findByName(name);
+        return departmentRepository.findByName(name);
     }
 
     public Department create(Department department){
-        return departmentsRepository.saveAndFlush(department);
+        return departmentRepository.saveAndFlush(department);
     }
 
     public Department update(Department department){
-        return departmentsRepository.save(department);
+        return departmentRepository.save(department);
     }
 
 
     public void deleteById(Integer department){
-         departmentsRepository.deleteById(department);
+         departmentRepository.deleteById(department);
     }
 
     public Department findById(Integer depID){
-        Optional<Department> optDep = departmentsRepository.findById(depID);
+        Optional<Department> optDep = departmentRepository.findById(depID);
         if (optDep.isPresent()) {
             return optDep.get();
         } else {
